@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <style type="text/css">
+        section {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 5em;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <p id="main"></p>
+    </section>
+    <script type="application/javascript">
+        let e = document.getElementById("main");
+        let datetime = window.location.hash.substring(1);
+        console.log(datetime);
+
+        let date = null;
+        if (datetime.length === 0) {
+            date = new Date();
+            window.history.pushState(null, "", `#${date.toISOString()}`);
+        } else {
+            date = new Date(datetime);
+        }
+
+        e.innerText = date.toLocaleString();
+    </script>
+</body>
+
+</html>
